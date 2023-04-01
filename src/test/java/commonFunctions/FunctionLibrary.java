@@ -3,6 +3,9 @@ package commonFunctions;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
@@ -151,8 +154,14 @@ public class FunctionLibrary {
 		Thread.sleep(2000);
 		Actual = driver.findElement(By.xpath("//table[@id='tbl_a_supplierslist']/tbody/tr[1]/td[6]/div/span/span")).getText();
 		System.out.println(Expected+" "+Actual);
-		Assert.assertEquals(Actual, Expected,"Supplier Number not found in Table");
-		
+		Assert.assertEquals(Actual, Expected,"Supplier Number not found in Table");	
+	}
+	
+	public static String generateDtate()
+	{
+		Date date = new Date();
+		DateFormat df = new SimpleDateFormat("YYYY_MM_dd");
+		return df.format(date);
 	}
 
 
